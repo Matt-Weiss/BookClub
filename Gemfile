@@ -37,7 +37,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'pry' 
+  gem 'pry'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
