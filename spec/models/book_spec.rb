@@ -4,7 +4,7 @@ RSpec.describe Book, type: :model do
 
   describe 'relationships' do
     it {should have_many :reviews}
-    it {should belong_to :book_author}
+    it {should have_many :book_author}
     it {should have_many(:authors).through :book_author}
   end
   describe 'validations' do
