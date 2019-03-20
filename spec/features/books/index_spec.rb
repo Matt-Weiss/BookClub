@@ -10,7 +10,8 @@ RSpec.describe 'book index page', type: :feature do
 
     astronaut.reviews.create(user_name: "bob123",rating: 2,review_headline: "Good",review_body: "Good book, space good, space fun")
     css.reviews.create(user_name: "joe876",rating: 3,review_headline: "BAD :(",review_body: "Css made me want to eat nails nad snails")
-  visit '/books'
+
+  visit books_path
 
     expect(page).to have_content(astronaut.title)
     expect(page).to have_content(astronaut.pages)
