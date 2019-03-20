@@ -18,6 +18,7 @@ RSpec.describe 'book index page', type: :feature do
   visit books_path
 
     expect(page).to have_content(@astronaut.title)
+    expect(page).to have_content(@astronaut.authors.first.name)
     expect(page).to have_content(@astronaut.pages)
     expect(page).to have_content(@astronaut.year_published)
     expect(page).to have_content(@css.title)
@@ -32,6 +33,15 @@ RSpec.describe 'book index page', type: :feature do
     click_on @astronaut.title
 
     expect(current_path).to eq(book_path(@astronaut))
+  end
+
+  it 'book authors are links to author show page' do
+
+    visit books_path
+
+    click_on @astronaut.authors.first.name
+
+    expect(current_path).to eq(author_path(@astronaut.authors.first))
   end
 
 end
