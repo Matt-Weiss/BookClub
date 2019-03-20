@@ -4,7 +4,9 @@
   <ul>
     <li><img src=<%= book.thumbnail %>></li>
     <li><%= book.title %></li>
-    <li><%= book.author %></li>
+    <% book.authors.each do |author| %>
+      <li><%= author.name %></li>
+    <% end %>
     <li><%= book.pages %></li>
     <li><%= book.year_published %></li>
   </ul>
