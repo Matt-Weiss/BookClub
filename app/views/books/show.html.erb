@@ -11,7 +11,7 @@
   <div>
     <ul>
       <% @book.authors.each do |author| %>
-        <li>Written By: <%= author.name %></li>
+        <li>Written By: <%= link_to author.name, author_path(author) %></li>
       <% end %>
       <li>Published In: <%= @book.year_published %></li>
       <li>Length: <%= @book.pages %> pages</li>
@@ -20,7 +20,7 @@
   <div>
     <br><br>
       <h3>Reviews</h3>
-      
+
       <% @book.reviews.each do |review| %>
         <h5><%= review.review_headline %></h5>
         <ul>
@@ -32,4 +32,3 @@
 
   </div>
 </body>
-
