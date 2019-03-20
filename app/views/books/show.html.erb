@@ -1,0 +1,35 @@
+
+<h1>
+  <%= @book.title %>
+</h1>
+
+
+<body>
+  <div>
+    <img src = <%= @book.thumbnail %>>
+  </div>
+  <div>
+    <ul>
+      <% @book.authors.each do |author| %>
+        <li>Written By: <%= author.name %></li>
+      <% end %>
+      <li>Published In: <%= @book.year_published %></li>
+      <li>Length: <%= @book.pages %> pages</li>
+    </ul>
+  </div>
+  <div>
+    <br><br>
+      <h3>Reviews</h3>
+      
+      <% @book.reviews.each do |review| %>
+        <h5><%= review.review_headline %></h5>
+        <ul>
+           <li>User: <%= review.user_name %></li>
+           <li>Rating: <%= review.rating %>/5</li>
+           <li>Review: <%= review.review_body %></li>
+        </ul>
+      <% end %>
+
+  </div>
+</body>
+
