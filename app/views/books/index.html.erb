@@ -3,7 +3,7 @@
 <% @books.each do |book| %>
   <ul>
     <li><img src=<%= book.thumbnail %>></li>
-    <li><%= book.title %></li>
+    <li><%= link_to book.title, book_path(book) %></li>
     <% book.authors.each do |author| %>
       <li><%= author.name %></li>
     <% end %>
