@@ -10,14 +10,13 @@ RSpec.describe 'book index page', type: :feature do
 
     astronaut.reviews.create(user_name: "bob123",rating: 2,review_headline: "Good",review_body: "Good book, space good, space fun")
     css.reviews.create(user_name: "joe876",rating: 3,review_headline: "BAD :(",review_body: "Css made me want to eat nails nad snails")
-    binding.pry
   visit '/books'
 
-    expect(page).to have_content(book_1.title)
-    expect(page).to have_content(book_1.pages)
-    expect(page).to have_content(book_1.year_published)
-    expect(page).to have_content(book_2.title)
-    expect(page).to have_content(book_2.pages)
-    expect(page).to have_content(book_2.year_published)
+    expect(page).to have_content(astronaut.title)
+    expect(page).to have_content(astronaut.pages)
+    expect(page).to have_content(astronaut.year_published)
+    expect(page).to have_content(css.title)
+    expect(page).to have_content(css.pages)
+    expect(page).to have_content(css.year_published)
   end
 end
