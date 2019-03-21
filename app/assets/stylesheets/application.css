@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text-center {
+  margin-top: 10%;
+
+}
