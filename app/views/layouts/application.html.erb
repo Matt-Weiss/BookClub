@@ -3,14 +3,30 @@
   <head>
     <title>BookClub</title>
     <%= csrf_meta_tags %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+  <header>
 
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">
+    <img src="https://knowledgequest.aasl.org/wp-content/uploads/2015/01/books.png" width="35" height="35" class="d-inline-block align-top" alt="">
+    Book Club
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href= '/books' >All Books <span class="sr-only">(current)</span></a>
+      </div>
+    </div>
+  </nav>
+  </header>
   <body>
-    <a href="/">Home</a>
-    <a href="/books">Book Index</a>
+    <!-- <a href="/">Home</a>
+    <a href="/books">Book Index</a> -->
 
     <%= yield %>
   </body>
