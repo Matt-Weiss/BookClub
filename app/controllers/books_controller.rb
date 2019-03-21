@@ -13,7 +13,7 @@ class BooksController < ApplicationController
 
   def create
     book = Book.create(book_params)
-    book.authors.create(name: author_params["authors"])
+    book.authors.create(name: author_params)
     redirect_to book_path(book)
   end
 
@@ -25,6 +25,7 @@ class BooksController < ApplicationController
   end
 
   def author_params
-    params.require(:book).permit(:authors)
+    params.permit(:author_names)
+    params[:author_names]
   end
 end
