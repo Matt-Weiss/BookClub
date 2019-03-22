@@ -12,5 +12,6 @@ RSpec.describe Book, type: :model do
     it {should validate_presence_of :pages}
     it {should validate_presence_of :year_published}
     it {should validate_presence_of :thumbnail}
+    it {should validate_uniqueness_of(:title)}
   end
 end

@@ -12,9 +12,17 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.create(book_params)
-    book.authors.create(name: author_params)
-    redirect_to book_path(book)
+    @book = Book.new(book_params)
+    if @book.save
+      author_strings = author_params[:author_names].split(",")  #split params into array of names
+      author_strings.each do |author|
+        author.strip
+        @book.authors << Author.find_or_create_by(name: author)
+      end
+      redirect_to book_path(@book)
+    else
+      render :new
+    end
   end
 
 
@@ -26,6 +34,5 @@ class BooksController < ApplicationController
 
   def author_params
     params.permit(:author_names)
-    params[:author_names]
   end
 end

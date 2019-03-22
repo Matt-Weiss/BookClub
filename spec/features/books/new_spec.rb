@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'new book page', type: :feature do
-  it 'shows form correctly' do
+  it 'shows form and creates book correctly' do
     visit new_book_path
       fill_in 'book[title]', with: 'Lord Of The Rings'
       fill_in 'book[year_published]', with: 2012
@@ -12,6 +12,9 @@ RSpec.describe 'new book page', type: :feature do
       book = Book.last
       expect(current_path).to eq(book_path(book))
       expect(page).to have_content('Lord Of The Rings')
+      expect(page).to have_content('Tolkien')
   end
+
+
 
 end

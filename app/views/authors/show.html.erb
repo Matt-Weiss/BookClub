@@ -1,0 +1,14 @@
+<h1>
+  <%= @author.name %>
+</h1>
+
+<body>
+  <ul>
+  <% @author.books.each do |book| %>
+  <li><%= link_to book.title, book_path(book) %></li>
+  <li><%= book.pages %></li>
+  <li><%= book.year_published %></li>
+  <img src=<%= book.thumbnail %>>
+  <% end %>
+  </ul>
+</body>
