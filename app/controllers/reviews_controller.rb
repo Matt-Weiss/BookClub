@@ -7,9 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
-    if Review.new(review_params).rating_number_limiter
-      @book.reviews.no_duplicate_user_names(review_params)
-    end
+    @book.reviews.no_duplicate_user_names(review_params)
     redirect_to book_path(@book)
   end
 
