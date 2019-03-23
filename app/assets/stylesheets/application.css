@@ -38,3 +38,25 @@
 .review-uniformer{
   height: 55px;
 }
+
+.img{
+  height: 400px;
+  width: 270;
+}
+
+.index-uniformer{
+  background-color: #8c8c8c;
+  height: 660px;
+  margin-left: 2.245%;
+  margin-right: 2.245%;
+  margin-top: 2.245%;
+  margin-bottom: 2.245%;
+}
+
+.body-bg{
+  background-color: #666666;
+}
+
+.card-bg{
+  background-color: #8c8c8c;
+}
