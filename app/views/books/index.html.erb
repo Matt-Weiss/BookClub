@@ -8,15 +8,15 @@
   <img src= <%= "#{book.thumbnail}" %> class="card-img-top" alt="...">
   <div class="card-body ">
     <h5 class="card-title"> <%= book.title %> </h5>
-    <p class="card-text"><% book.authors.each do |author| %>
+    <p class="card-text">
+    <% book.authors.each do |author| %>
     Authors: <%= link_to author.name, author_path(author) %> <br>
     <% end %>
-
     pages: <%= book.pages %>
     <br>
     Published: <%= book.year_published %>
     </p>
-    <a href= <%= book_path(book) %> class="btn btn-primary"> See More </a>
+    <a href= <%= book_path(book) %> class="btn btn-primary <%= book.title %>"> See More </a>
   </div>
 </div>
 <% end %>
