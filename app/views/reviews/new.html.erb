@@ -7,7 +7,7 @@
   </p>
   <p>
     <%= f.label :rating %>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating, :max=> 5, :min=> 0 %>
   </p>
   <p>
     <%= f.label :review_headline %>
