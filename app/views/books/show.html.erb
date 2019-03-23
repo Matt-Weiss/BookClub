@@ -14,8 +14,9 @@
             <% end %>
             Published In: <%= @book.year_published %>
             Length: <%= @book.pages %> pages
-            <br><h5>Reviews:</h5><br>
-            <% @book.reviews.each do |review| %>
+            <br><h5>Overall Score: <%= @book.reviews.overall_rating %>/5</h5><br>
+            <h5 class="text-muted text-left" style="padding-left: 3%">Best Reviews-<h5>
+            <% @book.best_reviews.each do |review| %>
             <div class="card d-inline-flex justify-content-center card-uniformer">
               <div class="card-body">
                 <h5 class="card-title"> <%= review.review_headline %> </h5>
