@@ -7,7 +7,7 @@ RSpec.describe 'book index page', type: :feature do
     @css = Book.create(title: 'CSSucks', pages: 420, year_published: 2019, thumbnail: 'https://i1.wp.com/www.developermemes.com/wp-content/uploads/2014/01/CSS-Sucks-TShirt-Meme.jpg?resize=385%2C232')
 
     @astronaut.authors.create(name: "Chris Hadfield")
-    @css.authors.create(name: "Matt Weiss")
+    @css.authors.create(name: "Matt Weiss, Mike Karnes")
 
     @astronaut.reviews.create(user_name: "bob123",rating: 2,review_headline: "Good",review_body: "Good book, space good, space fun")
     @css.reviews.create(user_name: "joe876",rating: 3,review_headline: "BAD :(",review_body: "Css made me want to eat nails nad snails")
@@ -22,6 +22,8 @@ RSpec.describe 'book index page', type: :feature do
     expect(page).to have_content(@astronaut.pages)
     expect(page).to have_content(@astronaut.year_published)
     expect(page).to have_content(@css.title)
+    expect(page).to have_content(@css.authors.first.name)
+    expect(page).to have_content(@css.authors.last.name)
     expect(page).to have_content(@css.pages)
     expect(page).to have_content(@css.year_published)
   end
