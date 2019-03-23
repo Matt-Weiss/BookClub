@@ -22,3 +22,19 @@
   margin-top: 10%;
 
 }
+
+.mb-3 {
+  margin: auto;
+  padding-top: 5%
+
+}
+
+.card-uniformer{
+  width: 30%;
+  height: 200px;
+
+}
+
+.review-uniformer{
+  height: 55px;
+}

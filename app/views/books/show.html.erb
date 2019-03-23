@@ -1,35 +1,54 @@
 
-<h1>
-  <%= @book.title %>
-</h1>
 
-
-<body>
-  <div>
-    <img src = <%= @book.thumbnail %>>
+<div class="card mb-3 text-center" style="max-width: 90%">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src=" <%= @book.thumbnail %> " class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body container">
+        <h5 class="card-title font-weight-bold"> <%= @book.title %> </h5>
+        <p class="card-text">
+            <% @book.authors.each do |author| %>
+            Written By: <%= link_to author.name, author_path(author) %>
+            <% end %>
+            Published In: <%= @book.year_published %>
+            Length: <%= @book.pages %> pages
+            <br><h5>Reviews:</h5><br>
+            <% @book.reviews.each do |review| %>
+            <div class="card d-inline-flex justify-content-center card-uniformer">
+              <div class="card-body">
+                <h5 class="card-title"> <%= review.review_headline %> </h5>
+                <h6 class="card-subtitle mb-2"> User: <%= review.user_name %> </h6>
+                <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
+                <p class="card-text">Rating: <%= review.rating %>/5 </p>
+                <!-- <a href="#" class="card-link">Card link</a> -->
+                <!-- <a href="#" class="card-link">Another link</a> -->
+              </div>
+            </div>
+            <% end %>
+        </p>
+        <p class="card-text"><small class="text-muted"></small></p>
+      </div>
+    </div>
   </div>
-  <div>
-    <ul>
-      <% @book.authors.each do |author| %>
-        <li>Written By: <%= link_to author.name, author_path(author) %></li>
-      <% end %>
-      <li>Published In: <%= @book.year_published %></li>
-      <li>Length: <%= @book.pages %> pages</li>
-    </ul>
-  </div>
-  <div>
-    <br><br>
-      <%= link_to 'new', new_book_review_path(@book.id) %>
+</div>
 
-      <h3>Reviews --------- Overall Rating: <%= @book.reviews.overall_rating %>/5</h3>
-      <% @book.reviews.each do |review| %>
-        <h5><%= review.review_headline %></h5>
-        <ul>
-           <li>User: <%= review.user_name %></li>
-           <li>Rating: <%= review.rating %>/5</li>
-           <li>Review: <%= review.review_body %></li>
-        </ul>
-      <% end %>
-
+<p class="container" style="margins: auto;">
+  <h5 class = "text-center" style="margin-top: 2%;">Reviews:</h5><br>
+  <% @book.reviews.each do |review| %>
+  <div class="card d-flex justify-content-center" style="width: 90%; margin: auto;">
+    <div class="card-body">
+      <h5 class="card-title"> <%= review.review_headline %> </h5>
+      <h6 class="card-subtitle mb-2"> User: <%= review.user_name %> </h6>
+      <p class="card-text"> <%= review.review_body %> </p>
+      <p class="card-text">Rating: <%= review.rating %>/5 </p>
+      <!-- <a href="#" class="card-link">Card link</a> -->
+      <!-- <a href="#" class="card-link">Another link</a> -->
+    </div>
   </div>
-</body>
+  <% end %>
+  <h5 style="margin-top: 2%; margin-left: 5%;">
+  <a class="btn btn-info" href=" <%= new_book_review_path(@book) %> " role="button">Leave Review</a>
+  </h5>
+</p>
