@@ -31,10 +31,8 @@ RSpec.describe 'book index page', type: :feature do
   it 'book titles are links to book show page' do
 
     visit books_path
-
-    click_on @astronaut.title
-
-    expect(current_path).to eq(book_path(@astronaut))
+    expect(page).to have_link("See More", :href=>book_path(@astronaut))
+    expect(page).to have_link("See More", :href=>book_path(@css))
   end
 
   it 'book authors are links to author show page' do
