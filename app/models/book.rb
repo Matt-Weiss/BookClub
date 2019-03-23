@@ -8,4 +8,4 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   validates :title, uniqueness: true
 
-end 
+end
