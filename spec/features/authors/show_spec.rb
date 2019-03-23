@@ -3,35 +3,21 @@ require 'rails_helper'
 RSpec.describe 'at the author show page', type: :feature do
   it 'shows all books by an author' do
 
-    visit new_book_path
-      fill_in 'book[title]', with: 'Lord Of The Rings'
-      fill_in 'book[year_published]', with: 2012
-      fill_in 'book[pages]', with: 315
-      fill_in 'book[thumbnail]', with: 'https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL._SX331_BO1,204,203,200_.jpg'
-      fill_in 'author_names', with: 'Tolkien'
-      click_button 'Create Book'
-    visit new_book_path
-      fill_in 'book[title]', with: 'Lord Of The Rings2'
-      fill_in 'book[year_published]', with: 2013
-      fill_in 'book[pages]', with: 456
-      fill_in 'book[thumbnail]', with: 'https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL._SX331_BO1,204,203,200_.jpg'
-      fill_in 'author_names', with: 'Tolkien'
-      click_button 'Create Book'
+    author = Author.create(name: 'Tolkien')
+    book_1 = author.books.create(title: 'Lord Of The Rings', year_published: 2012, pages: 315, thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL._SX331_BO1,204,203,200_.jpg')
+    book_2 = author.books.create(title: 'Lord Of The Rings2', year_published: 2013, pages: 456, thumbnail: 'https://images-na.ssl-images-amazon.com/images/I/51EstVXM1UL._SX331_BO1,204,203,200_.jpg')
 
-      click_link 'Tolkien'
+    visit book_path(book_1)
+    click_link 'Tolkien'
 
-      expect(page).to have_content('Lord Of The Rings')
-      expect(page).to have_content('Lord Of The Rings2')
-
+    expect(current_path).to eq(author_path(author))
+    expect(page).to have_content('Lord Of The Rings')
+    expect(page).to have_content('2012')
+    expect(page).to have_content('315')
+    expect(page).to have_xpath("/html/body/ul/img[1]")
+    expect(page).to have_content('Lord Of The Rings2')
+    expect(page).to have_content('2013')
+    expect(page).to have_content('456')
+    expect(page).to have_xpath("/html/body/ul/img[2]")
   end
 end
-
-
-
-
-  # I see all books by that author
-  # Each book should show:
-  # - the book title
-  # - the number of pages in the book
-  # - the year the book was published
-  # - a small image of the book cover
