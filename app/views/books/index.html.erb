@@ -1,13 +1,22 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 <h1>All Books</h1>
 
 <% @books.each do |book| %>
-  <ul>
-    <li><img src=<%= book.thumbnail %>></li>
-    <li><%= link_to book.title, book_path(book) %></li>
-    <% book.authors.each do |author| %>
-      <li><%= link_to author.name, author_path(author) %></li>
+<div class="card d-inline-flex p-2 bd-highlight" style="width: 18rem;">
+  <img src= <%= "#{book.thumbnail}" %> class="card-img-top" alt="...">
+  <div class="card-body ">
+    <h5 class="card-title"> <%= book.title %> </h5>
+    <p class="card-text"><% book.authors.each do |author| %>
+    Authors: <%= link_to author.name, author_path(author) %> <br>
     <% end %>
-    <li><%= book.pages %></li>
-    <li><%= book.year_published %></li>
-  </ul>
+
+    pages: <%= book.pages %>
+    <br>
+    Published: <%= book.year_published %>
+    </p>
+    <a href= <%= book_path(book) %> class="btn btn-primary"> See More </a>
+  </div>
+</div>
 <% end %>

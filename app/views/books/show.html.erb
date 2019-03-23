@@ -21,7 +21,7 @@
     <br><br>
       <%= link_to 'new', new_book_review_path(@book.id) %>
 
-      <h3>Reviews --------- Overall Rating: <%= @book.reviews.overall_rating %>/5</h3>
+      <h3>Reviews --------- Overall Rating: <%= @book.reviews.overall %>/5</h3>
       <% @book.reviews.each do |review| %>
         <h5><%= review.review_headline %></h5>
         <ul>
