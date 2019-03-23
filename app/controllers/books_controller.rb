@@ -14,14 +14,18 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      author_strings = author_params[:author_names].split(",")  #split params into array of names
-      author_strings.each do |author|
-        sanitized_author = author.strip.titlecase
-        @book.authors << Author.find_or_create_by(name: sanitized_author)
-      end
+      process_authors
       redirect_to book_path(@book)
     else
       render :new
+    end
+  end
+
+  def process_authors
+    author_strings = author_params[:author_names].split(",")  #split params into array of names
+    author_strings.each do |author|
+      sanitized_author = author.strip.titlecase
+      @book.authors << Author.find_or_create_by(name: sanitized_author)
     end
   end
 
