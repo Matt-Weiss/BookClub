@@ -16,8 +16,8 @@ class BooksController < ApplicationController
     if @book.save
       author_strings = author_params[:author_names].split(",")  #split params into array of names
       author_strings.each do |author|
-        author.strip
-        @book.authors << Author.find_or_create_by(name: author)
+        sanitized_author = author.strip.titlecase
+        @book.authors << Author.find_or_create_by(name: sanitized_author)
       end
       redirect_to book_path(@book)
     else
@@ -29,6 +29,10 @@ class BooksController < ApplicationController
   private
 
   def book_params
+    params[:book][:title] = params[:book][:title].titlecase
+    if params[:book][:thumbnail] == ""
+      params[:book][:thumbnail] = "https://bjwmartin.files.wordpress.com/2013/01/open_book_2.png"
+    end
     params.require(:book).permit(:title, :pages, :year_published, :thumbnail)
   end
 
