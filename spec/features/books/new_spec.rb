@@ -36,6 +36,9 @@ RSpec.describe 'new book page', type: :feature do
       click_button 'Create Book'
 
       expect(current_path).to eq(books_path)
+      expect(page).to have_content('Title')
+      expect(page).to have_content('Pages')
+      expect(page).to have_content('Year published')
       expect(page).to have_content('Thumbnail')
     end
 
@@ -83,4 +86,4 @@ RSpec.describe 'new book page', type: :feature do
       expect(page).to have_xpath("/html/body/div[1]/img")
     end
   end
-end 
+end
