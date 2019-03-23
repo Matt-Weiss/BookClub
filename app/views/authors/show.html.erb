@@ -6,6 +6,11 @@
   <ul>
   <% @author.books.each do |book| %>
   <li><%= link_to book.title, book_path(book) %></li>
+      <% book.authors.each do |author| %>
+        <% if author.name != @author.name %>
+        <li><%= link_to author.name, author_path(author) %></li>
+        <% end %>
+      <% end %>
   <li><%= book.pages %></li>
   <li><%= book.year_published %></li>
   <img src=<%= book.thumbnail %>>
