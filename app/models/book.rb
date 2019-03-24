@@ -9,11 +9,11 @@ class Book < ApplicationRecord
   validates :title, uniqueness: true
 
   def best_reviews
-    sorted_reviews = reviews.order(rating: :desc).limit(3)
+    reviews.order(rating: :desc).limit(3)
   end
 
   def worst_reviews
-    bad_reviews = reviews.order(:rating).limit(3)
+    reviews.order(:rating).limit(3)
   end
 
   def avg_review_score
