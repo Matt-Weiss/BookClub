@@ -61,7 +61,8 @@ RSpec.describe 'book show page', type: :feature do
     astronaut.reviews.create(user_name: "vmna",rating: 1,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
     visit book_path(astronaut)
     expect(page).to have_content("Overall Rating: 3.3/5")
- 
+     
+
 
   end
 
