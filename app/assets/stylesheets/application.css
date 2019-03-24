@@ -60,3 +60,7 @@
 .card-bg{
   background-color: #8c8c8c;
 }
+
+.card-bod{
+  padding: .25rem;
+}
