@@ -53,7 +53,7 @@ RSpec.describe 'book index page', type: :feature do
 
     expect(page).to have_content('Average Review Score: 3.0/5')
     expect(page).to have_content('Total Reviews: 2')
-    expect(page).to have_content('Average Review Score: n/a/5')
+    expect(page).to have_content('Average Review Score: na/5')
   end
 
 

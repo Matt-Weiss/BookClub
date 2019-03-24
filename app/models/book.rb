@@ -20,7 +20,7 @@ class Book < ApplicationRecord
     if reviews.first
       reviews.average(:rating).round(2)
     else
-      "n/a"
+      "na"
     end
   end
 
