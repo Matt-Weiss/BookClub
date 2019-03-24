@@ -8,12 +8,23 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   validates :title, uniqueness: true
 
-
-
   def best_reviews
-    sorted_reviews = reviews.order(:rating)
-    [sorted_reviews[-1],sorted_reviews[-2],sorted_reviews[-3]]
+    sorted_reviews = reviews.order(rating: :desc).limit(3)
   end
 
+  def worst_reviews
+    bad_reviews = reviews.order(:rating).limit(3)
+  end
 
+  def avg_review_score
+    if reviews.first
+      reviews.average(:rating).round(2)
+    else
+      "n/a"
+    end
+  end
+
+  def review_count
+    reviews.count(:id)
+  end
 end
