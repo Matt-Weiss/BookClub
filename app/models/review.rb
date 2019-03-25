@@ -10,9 +10,30 @@ class Review < ApplicationRecord
   end
 
   def self.overall_rating
-
     if average(:rating)
       average(:rating).round(1)
     end
   end
+
+  def self.best_reviews
+    order(rating: :desc).limit(3)
+  end
+
+  def self.worst_reviews
+    order(:rating).limit(3)
+  end
+
+  def self.avg_review_score
+    if first
+      average(:rating).round(2)
+    else
+      "na"
+    end
+  end
+
+  def self.review_count
+    count(:id)
+  end
+
+  
 end

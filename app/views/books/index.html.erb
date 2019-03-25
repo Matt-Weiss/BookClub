@@ -13,8 +13,8 @@
     <% end %>
     Pages: <%= book.pages %> <br>
     Published: <%= book.year_published %> <br>
-    Average Review Score: <%= book.avg_review_score %>/5 <br>
-    Total Reviews: <%= book.review_count %>
+    Average Review Score: <%= book.reviews.avg_review_score %>/5 <br>
+    Total Reviews: <%= book.reviews.review_count %>
     </p>
     <a href= <%= book_path(book) %> class="btn btn-primary <%= book.title %>"> See More </a>
   </div>
@@ -23,27 +23,26 @@
 <table class="table table-striped table-dark">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Top 3 Books</th>
+      <th scope="col">Worst 3 books</th>
+      <th scope="col">Most prolific users</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
+      <th scope="row"></th>
+      <td>????</td>
       <td>Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <th scope="row"></th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row"></th>
       <td>Larry</td>
       <td>the Bird</td>
       <td>@twitter</td>
