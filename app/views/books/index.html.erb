@@ -6,15 +6,15 @@
 <div class="card-bg card d-inline-flex p-2 bd-highlight index-uniformer" style="width: 18rem; background-color: #808080;">
   <img src= <%= "#{book.thumbnail}" %> class="card-img-top img" alt="...">
   <div class="card-bod card-bg">
-    <h5 class="card-title"> <%= link_to book.title, book_path(book) %> </h5>
+    <h5 class="card-title"> <%= book.title %> </h5>
     <p class="card-text">
     <% book.authors.each do |author| %>
     Authors: <%= link_to author.name, author_path(author) %> <br>
     <% end %>
     Pages: <%= book.pages %> <br>
     Published: <%= book.year_published %> <br>
-    Average Review Score: <%= book.avg_review_score %>/5 <br>
-    Total Reviews: <%= book.review_count %>
+    Average Review Score: <%= book.reviews.avg_review_score %>/5 <br>
+    Total Reviews: <%= book.reviews.review_count %>
     </p>
     <a href= <%= book_path(book) %> class="btn btn-primary <%= book.title %>"> See More </a>
   </div>
@@ -23,30 +23,41 @@
 <table class="table table-striped table-dark">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Top 3 Books</th>
+      <th scope="col">Worst 3 Books</th>
+      <th scope="col">Most prolific users</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"></th>
+      <% if @books.best_books.first %>
+      <td><%= @books.best_books.first.title %> <%= @books.best_books.first.avg_rating.round(1) %>/5 </td>
+      <td><%= @books.best_books.last.title %> <%= @books.best_books.last.avg_rating.round(1) %>/5 </td>
+      <% end %>
+      <% if @users_by_review_count.first %>
+        <td>User Name: <%= @users_by_review_count.first.user_name %> Number of Reviews: <%= @users_by_review_count.first.prolific_user %> </td>
+      <% end %>
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
+      <th scope="row"></th>
+      <% if @books.best_books.second %>
+      <td><%= @books.best_books.second.title %> <%= @books.best_books.second.avg_rating.round(1) %>/5</td>
+      <td><%= @books.best_books.second_to_last.title %> <%= @books.best_books.second_to_last.avg_rating.round(1) %>/5 </td>
+      <% end %>
+      <% if @users_by_review_count.second %>
+        <td>User Name: <%= @users_by_review_count.second.user_name %> Number of Reviews: <%= @users_by_review_count.second.prolific_user %></td>
+      <% end %>
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
+      <th scope="row"></th>
+      <% if @books.best_books.third %>
+      <td><%= @books.best_books.third.title %> <%= @books.best_books.third.avg_rating.round(1) %>/5</td>
+      <td><%= @books.best_books.third_to_last.title %> <%= @books.best_books.third_to_last.avg_rating.round(1) %>/5 </td>
+      <% end %>
+      <% if @users_by_review_count.third %>
+        <td>User Name:  <%= @users_by_review_count.third.user_name %> Number of Reviews: <%= @users_by_review_count.third.prolific_user %> </td>
+      <% end %>
     </tr>
   </tbody>
 </table>

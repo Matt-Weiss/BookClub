@@ -17,7 +17,7 @@
             <br><h5>Overall Rating: <%= @book.reviews.overall_rating %>/5</h5><br>
 
             <h5 class="text-muted text-left" style="padding-left: 3%">Best Reviews-<h5>
-              <% @book.best_reviews.each do |review| %>
+              <% @book.reviews.best_reviews.each do |review| %>
                 <div class="card d-inline-flex justify-content-center card-uniformer">
                   <div class="card-body">
                     <h5 class="card-title"> <%= review.review_headline %> </h5>
@@ -29,7 +29,7 @@
               <% end %>
 
               <h5 class="text-muted text-left" style="padding-left: 3%">Worst Reviews-<h5>
-                <% @book.worst_reviews.each do |review| %>
+                <% @book.reviews.worst_reviews.each do |review| %>
                   <div class="card d-inline-flex justify-content-center card-uniformer">
                     <div class="card-body">
                       <h5 class="card-title"> <%= review.review_headline %> </h5>

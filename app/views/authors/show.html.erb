@@ -14,6 +14,14 @@
   <li><%= book.pages %></li>
   <li><%= book.year_published %></li>
   <img src=<%= book.thumbnail %>>
+  <p>Top Review<p>
+    <% if book.reviews.author_page_review %>
+    <li><%= book.reviews.author_page_review.review_headline %></li>
+    <li><%= book.reviews.author_page_review.rating %></li>
+    <li><%= book.reviews.author_page_review.user_name %></li>
+    <% else %>
+    <li>Be the First to Leave A Review!</li>
+    <% end %>
   <% end %>
   </ul>
 </body>
