@@ -83,7 +83,7 @@ RSpec.describe 'new book page', type: :feature do
 
       book = Book.last
       expect(current_path).to eq(book_path(book))
-      expect(page).to have_xpath("/html/body/div[1]/img")
+      expect(page).to have_xpath("/html/body/div/div/div[1]/img")
     end
   end
 end
