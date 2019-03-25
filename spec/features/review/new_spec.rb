@@ -14,14 +14,15 @@ RSpec.describe 'Review Creation Workflow' do
     click_link 'Leave Review'
     expect(current_path).to eq(new_book_review_path(book))
     visit new_book_review_path(book)
-    fill_in 'review[user_name]', with: "cookiesrgood"
+    fill_in 'review[user_name]', with: "cookies r good"
     fill_in 'review[rating]', with: 4
     fill_in 'review[review_headline]', with: "THIS IS A BOOK"
     fill_in 'review[review_body]', with: "this is a review, full of opinions"
     click_on 'Create Review'
     expect(current_path).to eq(book_path(book))
+    expect(page).to have_content('Cookies R Good')
     click_link 'Leave Review'
-    fill_in 'review[user_name]', with: "cookiesrgood"
+    fill_in 'review[user_name]', with: "cookies r good"
     fill_in 'review[rating]', with: 3
     fill_in 'review[review_headline]', with: "lol i made 2 reviews"
     fill_in 'review[review_body]', with: "2 time"

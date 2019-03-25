@@ -11,8 +11,8 @@ RSpec.describe 'book index page', type: :feature do
     @css.authors.create(name: "Matt Weiss, Mike Karnes")
     @no_review.authors.create(name: 'Matt Weiss')
 
-    @astronaut.reviews.create(user_name: "bob123",rating: 2,review_headline: "Good",review_body: "Good book, space good, space fun")
-    @astronaut.reviews.create(user_name: "bob456",rating: 4,review_headline: "Good2",review_body: "Good book2, space good2, space fun2")
+    @astronaut.reviews.create(user_name: "bob123",rating: 3,review_headline: "Good",review_body: "Good book, space good, space fun")
+    @astronaut.reviews.create(user_name: "bob123",rating: 4,review_headline: "Good2",review_body: "Good book2, space good2, space fun2")
     @css.reviews.create(user_name: "joe876",rating: 3,review_headline: "BAD :(",review_body: "Css made me want to eat nails nad snails")
   end
 
@@ -56,5 +56,14 @@ RSpec.describe 'book index page', type: :feature do
     expect(page).to have_content('Average Review Score: na/5')
   end
 
+  it 'shows best and worst books and most prolific user' do
+
+    visit books_path
+
+    within("table") do
+      expect(page).to have_content('Top 3 Books Worst 3 Books Most prolific users')
+      expect(page).to have_content("An Astronaut's Guide to Life on Earth 3.5/5 CSSucks 3.0/5 User Name: bob123 Number of Reviews: 2 CSSucks 3.0/5 An Astronaut's Guide to Life on Earth 3.5/5 User Name: joe876 Number of Reviews: 1")
+    end
+  end
 
 end

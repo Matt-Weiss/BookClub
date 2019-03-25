@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
     @books = Book.all
+    @users_by_review_count = Review.prolific_users
   end
 
   def show
@@ -28,7 +29,6 @@ class BooksController < ApplicationController
       @book.authors << Author.find_or_create_by(name: sanitized_author)
     end
   end
-
 
   private
 
