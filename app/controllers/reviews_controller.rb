@@ -5,12 +5,12 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
   end
 
-  def index(user = '_')
-    user = params[:user]
+  def index
+    user_name = params[:user]
     if params[:sort] == 'Oldest First'
-      @reviews = Review.where(user_name: user).order(:created_at)
+      @reviews = Review.where(user_name: user_name).order(:created_at)
     else
-      @reviews = Review.where(user_name: user).order('created_at DESC')
+      @reviews = Review.where(user_name: user_name).order('created_at DESC')
     end
   end
 
@@ -20,16 +20,16 @@ class ReviewsController < ApplicationController
     redirect_to book_path(@book)
   end
 
-  # def delete
-  #   review = Review.find(params[:id])
-  #   user = review.user_name
-  #   review.destroy
-  #   if Review.find_by(user_name: user)
-  #     render: :index
-  #   else
-  #     redirect_to books_path
-  #   end
-  # end
+  def delete
+    review = Review.find(params[:id])
+    user = review.user_name
+    review.destroy
+    if Review.find_by(user_name: user)
+      redirect_to "/reviews?user=#{user}"
+    else
+      redirect_to books_path
+    end
+  end
 
   private
 
