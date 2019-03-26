@@ -47,12 +47,12 @@ RSpec.describe 'at the author show page', type: :feature do
     expect(page).to have_content('2012')
     expect(page).to have_content('315')
     expect(page).to have_content('5')
-    expect(page).to have_content('blah')
+    expect(page).to have_button('blah')
     expect(page).to have_xpath("/html/body/ul/img[1]")
     expect(page).to have_content('Lord Of The Rings2')
     expect(page).to have_content('2013')
     expect(page).to have_content('5')
-    expect(page).to have_content('bob')
+    expect(page).to have_button('bob')
     expect(page).to have_xpath("/html/body/ul/img[2]")
   end
 end

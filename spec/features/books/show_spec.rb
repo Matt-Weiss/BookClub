@@ -28,11 +28,11 @@ RSpec.describe 'book show page', type: :feature do
 
     visit book_path(astronaut)
 
-    expect(page).to have_content(astronaut.reviews.last.user_name)
+    expect(page).to have_button(astronaut.reviews.last.user_name)
     expect(page).to have_content(astronaut.reviews.last.rating)
     expect(page).to have_content(astronaut.reviews.last.review_headline)
     expect(page).to have_content(astronaut.reviews.last.review_body)
-    expect(page).to have_content(astronaut.reviews[-2].user_name)
+    expect(page).to have_button(astronaut.reviews[-2].user_name)
     expect(page).to have_content(astronaut.reviews[-2].rating)
     expect(page).to have_content(astronaut.reviews[-2].review_headline)
     expect(page).to have_content(astronaut.reviews[-2].review_body)
@@ -62,9 +62,9 @@ RSpec.describe 'book show page', type: :feature do
     visit book_path(astronaut)
     expect(page).to have_content("Best Reviews-")
     expect(page).to have_content("Worst Reviews-")
-    expect(page).to have_content("bob123")
-    expect(page).to have_content("joe876")
-    expect(page).to have_content("hsju")
+    expect(page).to have_button("bob123")
+    expect(page).to have_button("joe876")
+    expect(page).to have_button("hsju")
     expect(page).to have_content("ljknrfwdilnfdhdedfoisw")
 
     expect(page).to have_content("Overall Rating: 3.3/5")

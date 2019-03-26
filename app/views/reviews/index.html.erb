@@ -1,0 +1,30 @@
+<h1> <%= @reviews.first.user_name %> </h1>
+  <% @reviews.each do |review| %>
+  <img src="<%= review.book.thumbnail %>"
+  <ul>
+    <li>
+      <%= review.book.title %>
+    </li>
+    <li>
+      <%= review.review_headline %>
+    </li>
+    <li>
+    <%= review.review_body %>
+      </li>
+    <li>
+      <%= review.rating %>
+    </li>
+    <li>
+      <%= review.created_at %>
+    </li>
+  </ul>
+  <% end %>
+
+  <form action="<%= reviews_path %>" method="GET">
+    <input type="hidden" name="user" value="<%= @reviews.first.user_name %>" />
+    <input type="submit" style="background:none; border-width:0px; color:blue;" name="sort" value="Oldest First" />
+  </form>
+  <form action="<%= reviews_path %>" method="GET">
+    <input type="hidden" name="user" value="<%= @reviews.first.user_name %>" />
+    <input type="submit" style="background:none; border-width:0px; color:blue;" name="sort" value="Newest First" />
+  </form>

@@ -9,59 +9,72 @@
       <div class="card-body container">
         <h5 class="card-title font-weight-bold"> <%= @book.title %> </h5>
         <p class="card-text">
-            <% @book.authors.each do |author| %>
-            Written By: <%= link_to author.name, author_path(author) %>
-            <% end %>
-            Published In: <%= @book.year_published %>
-            Length: <%= @book.pages %> pages
-            <br><h5>Overall Rating: <%= @book.reviews.overall_rating %>/5</h5><br>
+          <% @book.authors.each do |author| %>
+          Written By: <%= link_to author.name, author_path(author) %>
+          <% end %>
+          Published In: <%= @book.year_published %>
+          Length: <%= @book.pages %> pages
+          <br><h5>Overall Rating: <%= @book.reviews.overall_rating %>/5</h5><br>
 
-            <h5 class="text-muted text-left" style="padding-left: 3%">Best Reviews-<h5>
-              <% @book.reviews.best_reviews.each do |review| %>
-                <div class="card d-inline-flex justify-content-center card-uniformer">
-                  <div class="card-body">
-                    <h5 class="card-title"> <%= review.review_headline %> </h5>
-                    <h6 class="card-subtitle mb-2"> User: <%= review.user_name %> </h6>
-                    <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
-                    <p class="card-text"> Rating: <%= review.rating %>/5 </p>
-                  </div>
+          <h5 class="text-muted text-left" style="padding-left: 3%">Best Reviews-<h5>
+            <% @book.reviews.best_reviews.each do |review| %>
+            <div class="card d-inline-flex justify-content-center card-uniformer">
+              <div class="card-body">
+                <h5 class="card-title"> <%= review.review_headline %> </h5>
+                <h6 class="card-subtitle mb-2">User:
+                  <form action="<%= reviews_path %>" method="GET">
+                    <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= review.user_name %>" />
+                  </form>
+                </h6>
+                <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
+                <p class="card-text"> Rating: <%= review.rating %>/5 </p>
+              </div>
+            </div>
+            <% end %>
+
+            <h5 class="text-muted text-left" style="padding-left: 3%">Worst Reviews-<h5>
+              <% @book.reviews.worst_reviews.each do |review| %>
+              <div class="card d-inline-flex justify-content-center card-uniformer">
+                <div class="card-body">
+                  <h5 class="card-title"> <%= review.review_headline %> </h5>
+                  <h6 class="card-subtitle mb-2"> User:
+                    <form action="<%= reviews_path %>" method="GET">
+                      <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= review.user_name %>" />
+                    </form>
+                  </h6>
+                  <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
+                  <p class="card-text">Rating: <%= review.rating %>/5 </p>
                 </div>
+              </div>
               <% end %>
 
-              <h5 class="text-muted text-left" style="padding-left: 3%">Worst Reviews-<h5>
-                <% @book.reviews.worst_reviews.each do |review| %>
-                  <div class="card d-inline-flex justify-content-center card-uniformer">
-                    <div class="card-body">
-                      <h5 class="card-title"> <%= review.review_headline %> </h5>
-                      <h6 class="card-subtitle mb-2"> User: <%= review.user_name %> </h6>
-                      <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
-                      <p class="card-text">Rating: <%= review.rating %>/5 </p>
-                    </div>
-                  </div>
-                <% end %>
 
-
-        <p class="card-text"><small class="text-muted"></small></p>
+              <p class="card-text"><small class="text-muted"></small></p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<p class="container" style="margins: auto;">
-  <h5 class = "text-center" style="margin-top: 2%;">Reviews:</h5><br>
-  <% @book.reviews.each do |review| %>
-  <div class="card d-flex justify-content-center" style="width: 90%; margin: auto;">
-    <div class="card-body">
-      <h5 class="card-title"> <%= review.review_headline %> </h5>
-      <h6 class="card-subtitle mb-2"> User: <%= review.user_name %> </h6>
-      <p class="card-text"> <%= review.review_body %> </p>
-      <p class="card-text">Rating: <%= review.rating %>/5 </p>
-      <!-- <a href="#" class="card-link">Card link</a> -->
-      <!-- <a href="#" class="card-link">Another link</a> -->
-    </div>
-  </div>
-  <% end %>
-  <h5 style="margin-top: 2%; margin-left: 5%;">
-  <a class="btn btn-info" href="<%= new_book_review_path(@book) %>" role="button">Leave Review</a>
-  </h5>
-</p>
+      <container id="first">
+      <p class="container" style="margins: auto;">
+        <h5 class = "text-center" style="margin-top: 2%;">Reviews:</h5><br>
+        <% @book.reviews.each do |review| %>
+        <div class="card d-flex justify-content-center" style="width: 90%; margin: auto;">
+          <div class="card-body">
+            <h5 class="card-title"> <%= review.review_headline %> </h5>
+            <h6 class="card-subtitle mb-2">
+              <form action="<%= reviews_path %>" method="GET">
+                <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= review.user_name %>" />
+              </form>
+            </h6>
+            <p class="card-text"> <%= review.review_body %> </p>
+            <p class="card-text">Rating: <%= review.rating %>/5 </p>
+            <!-- <a href="#" class="card-link">Card link</a> -->
+            <!-- <a href="#" class="card-link">Another link</a> -->
+          </div>
+        </div>
+        <% end %>
+        <h5 style="margin-top: 2%; margin-left: 5%;">
+          <a class="btn btn-info" href="<%= new_book_review_path(@book) %>" role="button">Leave Review</a>
+        </h5>
+      </p>
+      </container>
