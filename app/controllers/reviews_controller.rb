@@ -20,6 +20,9 @@ class ReviewsController < ApplicationController
     redirect_to book_path(@book)
   end
 
+  def destroy
+    binding.pry
+  end
 
 
   private
