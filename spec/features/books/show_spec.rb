@@ -60,10 +60,14 @@ RSpec.describe 'book show page', type: :feature do
     astronaut.reviews.create(user_name: "qor",rating: 2,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
     astronaut.reviews.create(user_name: "vmna",rating: 1,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
     visit book_path(astronaut)
+    expect(page).to have_content("Best Reviews-")
+    expect(page).to have_content("Worst Reviews-")
+    expect(page).to have_content("bob123")
+    expect(page).to have_content("joe876")
+    expect(page).to have_content("hsju")
+    expect(page).to have_content("ljknrfwdilnfdhdedfoisw")
+
     expect(page).to have_content("Overall Rating: 3.3/5")
-     
-
-
   end
 
 end
