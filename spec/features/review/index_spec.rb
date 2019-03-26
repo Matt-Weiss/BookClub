@@ -54,19 +54,21 @@ RSpec.describe 'User review show page' do
 
   it 'should allow each review to be deleted via ajecent buttons' do
     book = Book.create(title: "first book", pages: 195, year_published: 1990, thumbnail: "https://www.bookbaby.com/images/book-cover-design-basic.png")
-    book_2 = Book.create(title: "second book", pages: 1231, year_published: 1321, thumbnail: "https://www.bookbaby.com/images/book-cover-design-basic.png")
-    book.authors.create(name: "Matt Weiss")
+    # book_2 = Book.create(title: "second book", pages: 1231, year_published: 1321, thumbnail: "https://www.bookbaby.com/images/book-cover-design-basic.png")
     book.reviews.create(user_name: "idek", review_headline: "first review", review_body: "good", rating: 4)
-    book_2.reviews.create(user_name: "idek", review_headline: "second review", review_body: "bad", rating: 3)
+    # book_2.reviews.create(user_name: "idek", review_headline: "second review", review_body: "bad", rating: 3)
 
     visit book_path(book)
     within('#first') do
       click_on "idek"
     end
     expect(current_path).to eq(reviews_path)
+    binding.pry
     click_on 'delete review'
-    expect(current_path).to eq(reviews_path)
-    click_on 'delete review'
+
     expect(current_path).to eq(books_path)
+    # click_on 'delete review'
+    # expect(current_path).to eq(books_path)
+
   end
 end
