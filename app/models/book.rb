@@ -13,4 +13,8 @@ class Book < ApplicationRecord
     joins(:reviews).select("books.*, avg(reviews.rating) as avg_rating").group(:id).order("avg_rating DESC")
   end
 
+  def self.review_count
+    joins(:reviews).select("books.*, count(reviews.book_id) as review_count").group(:id).order("review_count DESC")
+  end
+
 end
