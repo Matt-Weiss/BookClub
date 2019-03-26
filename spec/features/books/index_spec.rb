@@ -66,4 +66,27 @@ RSpec.describe 'book index page', type: :feature do
     end
   end
 
+  it 'can sort several ways' do
+
+    visit books_path
+
+    click_on "Review Count(Highest First)"
+    expect(page).to have_content("An Astronaut's Guide to Life on Earth\nAuthors: Chris Hadfield Pages: 284 Published: 2013 Average Review Score: 3.5/5 Total Reviews: 2\nSee More\nCSSucks\nAuthors: Matt Weiss, Mike Karnes Pages: 420 Published: 2019 Average Review Score: 3.0/5 Total Reviews: 1")
+
+    click_on "Review Count(Lowest First)"
+    expect(page).to have_content("CSSucks\nAuthors: Matt Weiss, Mike Karnes Pages: 420 Published: 2019 Average Review Score: 3.0/5 Total Reviews: 1\nSee More\nAn Astronaut's Guide to Life on Earth\nAuthors: Chris Hadfield Pages: 284 Published: 2013 Average Review Score: 3.5/5 Total Reviews: 2")
+
+    click_on "Ratings(Highest First)"
+    expect(page).to have_content("An Astronaut's Guide to Life on Earth\nAuthors: Chris Hadfield Pages: 284 Published: 2013 Average Review Score: 3.5/5 Total Reviews: 2\nSee More\nCSSucks\nAuthors: Matt Weiss, Mike Karnes Pages: 420 Published: 2019 Average Review Score: 3.0/5 Total Reviews: 1")
+
+    click_on "Ratings(Lowest First)"
+    expect(page).to have_content("CSSucks\nAuthors: Matt Weiss, Mike Karnes Pages: 420 Published: 2019 Average Review Score: 3.0/5 Total Reviews: 1\nSee More\nAn Astronaut's Guide to Life on Earth\nAuthors: Chris Hadfield Pages: 284 Published: 2013 Average Review Score: 3.5/5 Total Reviews: 2")
+
+    click_on "Page Count(Highest First)"
+    expect(page).to have_content("CSSucks\nAuthors: Matt Weiss, Mike Karnes Pages: 420 Published: 2019 Average Review Score: 3.0/5 Total Reviews: 1\nSee More\nAn Astronaut's Guide to Life on Earth\nAuthors: Chris Hadfield Pages: 284 Published: 2013 Average Review Score: 3.5/5 Total Reviews: 2")
+
+    click_on "Page Count(Lowest First)"
+    expect(page).to have_content("An Astronaut's Guide to Life on Earth\nAuthors: Chris Hadfield Pages: 284 Published: 2013 Average Review Score: 3.5/5 Total Reviews: 2\nSee More\nCSSucks\nAuthors: Matt Weiss, Mike Karnes Pages: 420 Published: 2019 Average Review Score: 3.0/5 Total Reviews: 1")
+
+  end
 end
