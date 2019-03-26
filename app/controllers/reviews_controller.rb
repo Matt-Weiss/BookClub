@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
   end
 
-  def index
+  def index(user = '_')
     user = params[:user]
     if params[:sort] == 'Oldest First'
       @reviews = Review.where(user_name: user).order(:created_at)
@@ -20,10 +20,16 @@ class ReviewsController < ApplicationController
     redirect_to book_path(@book)
   end
 
-  def destroy
-    binding.pry
-  end
-
+  # def delete
+  #   review = Review.find(params[:id])
+  #   user = review.user_name
+  #   review.destroy
+  #   if Review.find_by(user_name: user)
+  #     render: :index
+  #   else
+  #     redirect_to books_path
+  #   end
+  # end
 
   private
 

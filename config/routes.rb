@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   end
   resources :authors, only: [:show]
   resources :book_authors, only: [:new]
-  resources :reviews, only: [:index, :create, :destroy]
+  resources :reviews, only: [:index, :create]
+  delete '/reviews/:id', to: "reviews#delete", as: :delete_review
 end

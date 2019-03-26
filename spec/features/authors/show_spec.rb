@@ -45,10 +45,10 @@ RSpec.describe 'at the author show page', type: :feature do
     visit author_path(author)
 
     expect(page).to have_content(review_1.rating)
-    expect(page).to have_content(review_1.user_name)
+    expect(page).to have_button(review_1.user_name)
 
     expect(page).to have_content(review_2.rating)
-    expect(page).to have_content(review_2.user_name)
+    expect(page).to have_button(review_2.user_name)
 
   end
 end
