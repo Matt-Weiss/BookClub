@@ -7,7 +7,11 @@ class ReviewsController < ApplicationController
 
   def index
     user = params[:user]
-    @reviews = Review.where(user_name: user)
+    if params[:sort] == 'Oldest First'
+      @reviews = Review.where(user_name: user).order(:created_at)
+    else
+      @reviews = Review.where(user_name: user).order('created_at DESC')
+    end
   end
 
   def create

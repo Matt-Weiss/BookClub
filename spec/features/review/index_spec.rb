@@ -34,19 +34,22 @@ RSpec.describe 'User review show page' do
     book.authors.create(name: "Matt Weiss")
     book_2.authors.create(name: "Mike Karnes")
     book.reviews.create(user_name: "idek", review_headline: "first review", review_body: "good", rating: 4)
-    book.reviews.create(user_name: "evilguy", review_headline: "shouldnt be here", review_body: "good", rating: 4)
+    book.reviews.create(user_name: "evilguy", review_headline: "second", review_body: "good", rating: 4)
     book_2.reviews.create(user_name: "idek", review_headline: "second review", review_body: "bad", rating: 3)
     book_2.reviews.create(user_name: "evilguy", review_headline: "shouldnt be here", review_body: "bad", rating: 3)
 
     visit book_path(book)
-    within('first') do
+    within('#first') do
       click_on "idek"
     end
     expect(current_path).to eq(reviews_path)
+    click_on 'Oldest First'
+    expect(page).to have_content(book.reviews.first.review_headline)
+    expect(page).to have_content(book_2.reviews.first.review_headline)
     click_on 'Newest First'
-    expect(page).to have_content(book.review_headline)
-    expect(page).to have_content(book_2.review_headline)
-
+    expect(page).to have_content(book_2.reviews.first.review_headline)
+    expect(page).to have_content(book.reviews.first.review_headline)
+    
   end
 
 end
