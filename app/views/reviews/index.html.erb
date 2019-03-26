@@ -1,0 +1,21 @@
+<h1> <%= @reviews.last.user_name %> </h1>
+  <% @reviews.each do |review| %>
+  <img src="<%= review.book.thumbnail %>"
+  <ul>
+    <li>
+      <%= review.book.title %>
+    </li>
+    <li>
+      <%= review.review_headline %>
+    </li>
+    <li>
+    <%= review.review_body %>
+      </li>
+    <li>
+      <%= review.rating %>
+    </li>
+    <li>
+      <%= review.created_at %>
+    </li>
+  </ul>
+  <% end %>
