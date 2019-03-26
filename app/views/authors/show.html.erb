@@ -18,7 +18,11 @@
     <% if book.reviews.author_page_review %>
     <li><%= book.reviews.author_page_review.review_headline %></li>
     <li><%= book.reviews.author_page_review.rating %></li>
-    <li><%= book.reviews.author_page_review.user_name %></li>
+    <li>
+    <form action="<%= reviews_path %>" method="GET">
+      <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= book.reviews.author_page_review.user_name %>" />
+    </form>
+    </li>
     <% else %>
     <li>Be the First to Leave A Review!</li>
     <% end %>

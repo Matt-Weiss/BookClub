@@ -28,4 +28,25 @@ RSpec.describe 'User review show page' do
 
   end
 
+  it 'should be able to sort reviews by date' do
+    book = Book.create(title: "first book", pages: 195, year_published: 1990, thumbnail: "https://www.bookbaby.com/images/book-cover-design-basic.png")
+    book_2 = Book.create(title: "second book", pages: 1231, year_published: 1321, thumbnail: "https://www.bookbaby.com/images/book-cover-design-basic.png")
+    book.authors.create(name: "Matt Weiss")
+    book_2.authors.create(name: "Mike Karnes")
+    book.reviews.create(user_name: "idek", review_headline: "first review", review_body: "good", rating: 4)
+    book.reviews.create(user_name: "evilguy", review_headline: "shouldnt be here", review_body: "good", rating: 4)
+    book_2.reviews.create(user_name: "idek", review_headline: "second review", review_body: "bad", rating: 3)
+    book_2.reviews.create(user_name: "evilguy", review_headline: "shouldnt be here", review_body: "bad", rating: 3)
+
+    visit book_path(book)
+    within('first') do
+      click_on "idek"
+    end
+    expect(current_path).to eq(reviews_path)
+    click_on 'Newest First'
+    expect(page).to have_content(book.review_headline)
+    expect(page).to have_content(book_2.review_headline)
+
+  end
+
 end

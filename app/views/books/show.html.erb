@@ -23,7 +23,7 @@
                 <h5 class="card-title"> <%= review.review_headline %> </h5>
                 <h6 class="card-subtitle mb-2">User:
                   <form action="<%= reviews_path %>" method="GET">
-                    <input type="submit" name="user" value="<%= review.user_name %>" />
+                    <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= review.user_name %>" />
                   </form>
                 </h6>
                 <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
@@ -39,7 +39,7 @@
                   <h5 class="card-title"> <%= review.review_headline %> </h5>
                   <h6 class="card-subtitle mb-2"> User:
                     <form action="<%= reviews_path %>" method="GET">
-                      <input type="submit" name="user" value="<%= review.user_name %>" />
+                      <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= review.user_name %>" />
                     </form>
                   </h6>
                   <p class="card-text review-uniformer overflow-auto"> <%= review.review_body %> </p>
@@ -63,7 +63,7 @@
             <h5 class="card-title"> <%= review.review_headline %> </h5>
             <h6 class="card-subtitle mb-2">
               <form action="<%= reviews_path %>" method="GET">
-                <input type="submit" name="user" value="<%= review.user_name %>" />
+                <input type="submit" style="background:none; border-width:0px; color:blue;" name="user" value="<%= review.user_name %>" />
               </form>
             </h6>
             <p class="card-text"> <%= review.review_body %> </p>
