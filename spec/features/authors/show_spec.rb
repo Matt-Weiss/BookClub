@@ -49,5 +49,6 @@ RSpec.describe 'at the author show page', type: :feature do
 
     expect(page).to have_content(review_2.rating)
     expect(page).to have_content(review_2.user_name)
+
   end
 end

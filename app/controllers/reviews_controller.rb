@@ -5,11 +5,25 @@ class ReviewsController < ApplicationController
     @book = Book.find(params[:book_id])
   end
 
+  def index
+    user = params[:user]
+    if params[:sort] == 'Oldest First'
+      @reviews = Review.where(user_name: user).order(:created_at)
+    else
+      @reviews = Review.where(user_name: user).order('created_at DESC')
+    end
+  end
+
   def create
     @book = Book.find(params[:book_id])
     @book.reviews.no_duplicate_user_names(review_params)
     redirect_to book_path(@book)
   end
+
+  def destroy
+    binding.pry
+  end
+
 
   private
 

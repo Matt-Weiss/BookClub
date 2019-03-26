@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
   resources :authors, only: [:show]
   resources :book_authors, only: [:new]
-  resources :reviews, only: [:index, :create]
+  resources :reviews, only: [:index, :create, :destroy]
 end

@@ -20,7 +20,7 @@ RSpec.describe 'Review Creation Workflow' do
     fill_in 'review[review_body]', with: "this is a review, full of opinions"
     click_on 'Create Review'
     expect(current_path).to eq(book_path(book))
-    expect(page).to have_content('Cookies R Good')
+    expect(page).to have_button('Cookies R Good')
     click_link 'Leave Review'
     fill_in 'review[user_name]', with: "cookies r good"
     fill_in 'review[rating]', with: 3
