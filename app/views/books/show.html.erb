@@ -76,5 +76,8 @@
         <h5 style="margin-top: 2%; margin-left: 5%;">
           <a class="btn btn-info" href="<%= new_book_review_path(@book) %>" role="button">Leave Review</a>
         </h5>
+
+      <%= link_to 'Delete Book', delete_book_path(@book), method: :delete %>
+
       </p>
       </container>

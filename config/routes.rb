@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :book_authors, only: [:new]
   resources :reviews, only: [:index, :create]
   delete '/reviews/:id', to: "reviews#delete", as: :delete_review
+  delete '/books/:id', to: "books#delete", as: :delete_book
+  delete '/authors/:id', to: "authors#delete", as: :delete_author
 end

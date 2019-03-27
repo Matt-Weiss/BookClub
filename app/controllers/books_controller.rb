@@ -36,6 +36,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def delete
+    # binding.pry
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+
+  end
+
   def process_authors
     author_strings = author_params[:author_names].split(",")  #split params into array of names
     author_strings.each do |author|

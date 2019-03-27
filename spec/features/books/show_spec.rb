@@ -70,21 +70,21 @@ RSpec.describe 'book show page', type: :feature do
     expect(page).to have_content("Overall Rating: 3.3/5")
   end
 
-  # xit 'should have a functioning delete button' do
-  #   astronaut = Book.create(title: "An Astronaut's Guide to Life on Earth", pages: 284, year_published: 2013, thumbnail: 'http://media.npr.org/assets/bakertaylor/covers/a/an-astronauts-guide-to-life-on-earth/9780316253017_custom-72b5b1e3d259fb604fee1401424db3c8cd04cfe0-s6-c30.jpg')
-  #   astronaut.authors.create(name: "Chris Hadfield")
-  #   astronaut.reviews.create(user_name: "bob123",rating: 5,review_headline: "Good",review_body: "Good book, space good, space fun")
-  #   astronaut.reviews.create(user_name: "joe876",rating: 5,review_headline: "BAD :(",review_body: "Css made me want to eat nails nad snails")
-  #   astronaut.reviews.create(user_name: "hsju",rating: 4,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
-  #   astronaut.reviews.create(user_name: "ksoa",rating: 3,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
-  #   astronaut.reviews.create(user_name: "qor",rating: 2,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
-  #   astronaut.reviews.create(user_name: "vmna",rating: 1,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
-  #   visit book_path(astronaut)
-  #   click_on 'Delete Book'
-  #   expect(current_path).to eq(books_path)
-  #   expect(page).to_not have_content(astronaut.title)
-  #   expect(page).to_not have_content(astronaut.pages)
-  #   expect(page).to_not have_content(astronaut.year_published)
-  # end
+  it 'should have a functioning delete button' do
+    astronaut = Book.create(title: "An Astronaut's Guide to Life on Earth", pages: 284, year_published: 2013, thumbnail: 'http://media.npr.org/assets/bakertaylor/covers/a/an-astronauts-guide-to-life-on-earth/9780316253017_custom-72b5b1e3d259fb604fee1401424db3c8cd04cfe0-s6-c30.jpg')
+    astronaut.authors.create(name: "Chris Hadfield")
+    astronaut.reviews.create(user_name: "bob123",rating: 5,review_headline: "Good",review_body: "Good book, space good, space fun")
+    astronaut.reviews.create(user_name: "joe876",rating: 5,review_headline: "BAD :(",review_body: "Css made me want to eat nails nad snails")
+    astronaut.reviews.create(user_name: "hsju",rating: 4,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
+    astronaut.reviews.create(user_name: "ksoa",rating: 3,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
+    astronaut.reviews.create(user_name: "qor",rating: 2,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
+    astronaut.reviews.create(user_name: "vmna",rating: 1,review_headline: "luehdwd",review_body: "ljknrfwdilnfdhdedfoisw")
+    visit book_path(astronaut)
+    click_on 'Delete Book'
+    expect(current_path).to eq(books_path)
+    expect(page).to_not have_content(astronaut.title)
+    expect(page).to_not have_content(astronaut.pages)
+    expect(page).to_not have_content(astronaut.year_published)
+  end
 
 end
