@@ -4,7 +4,7 @@ def show
   @author = Author.find(params[:id])
 end
 
-def delete
+def destroy
   @author = Author.find(params[:id])
   @author.books.each do |book|
     book.destroy

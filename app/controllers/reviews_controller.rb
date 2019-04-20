@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   def new
-    #refactor
     @book_review = Review.new
     @book = Book.find(params[:book_id])
   end
@@ -20,7 +19,7 @@ class ReviewsController < ApplicationController
     redirect_to book_path(@book)
   end
 
-  def delete
+  def destroy
     review = Review.find(params[:id])
     user = review.user_name
     review.destroy

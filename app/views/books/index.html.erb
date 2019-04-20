@@ -9,7 +9,7 @@
     <h5 class="card-title"> <%= book.title %> </h5>
     <p class="card-text">
     <% book.authors.each do |author| %>
-    Authors: <%= link_to author.name, author_path(author) %> <br>
+      Authors: <%= link_to author.name, author_path(author) %> <br>
     <% end %>
     Pages: <%= book.pages %> <br>
     Published: <%= book.year_published %> <br>
@@ -33,8 +33,8 @@
     <tr>
       <th scope="row"></th>
       <% if @books.best_books.first %>
-      <td><%= @books.best_books.first.title %> <%= @books.best_books.first.avg_rating.round(1) %>/5 </td>
-      <td><%= @books.best_books.last.title %> <%= @books.best_books.last.avg_rating.round(1) %>/5 </td>
+        <td><%= @books.best_books.first.title %> <%= @books.best_books.first.avg_rating.round(1) %>/5 </td>
+        <td><%= @books.best_books.last.title %> <%= @books.best_books.last.avg_rating.round(1) %>/5 </td>
       <% end %>
       <% if @users_by_review_count.first %>
         <td>User Name: <%= @users_by_review_count.first.user_name %> Number of Reviews: <%= @users_by_review_count.first.prolific_user %> </td>
@@ -43,8 +43,8 @@
     <tr>
       <th scope="row"></th>
       <% if @books.best_books.second %>
-      <td><%= @books.best_books.second.title %> <%= @books.best_books.second.avg_rating.round(1) %>/5</td>
-      <td><%= @books.best_books.second_to_last.title %> <%= @books.best_books.second_to_last.avg_rating.round(1) %>/5 </td>
+        <td><%= @books.best_books.second.title %> <%= @books.best_books.second.avg_rating.round(1) %>/5</td>
+        <td><%= @books.best_books.second_to_last.title %> <%= @books.best_books.second_to_last.avg_rating.round(1) %>/5 </td>
       <% end %>
       <% if @users_by_review_count.second %>
         <td>User Name: <%= @users_by_review_count.second.user_name %> Number of Reviews: <%= @users_by_review_count.second.prolific_user %></td>
@@ -53,8 +53,8 @@
     <tr>
       <th scope="row"></th>
       <% if @books.best_books.third %>
-      <td><%= @books.best_books.third.title %> <%= @books.best_books.third.avg_rating.round(1) %>/5</td>
-      <td><%= @books.best_books.third_to_last.title %> <%= @books.best_books.third_to_last.avg_rating.round(1) %>/5 </td>
+        <td><%= @books.best_books.third.title %> <%= @books.best_books.third.avg_rating.round(1) %>/5</td>
+        <td><%= @books.best_books.third_to_last.title %> <%= @books.best_books.third_to_last.avg_rating.round(1) %>/5 </td>
       <% end %>
       <% if @users_by_review_count.third %>
         <td>User Name:  <%= @users_by_review_count.third.user_name %> Number of Reviews: <%= @users_by_review_count.third.prolific_user %> </td>
